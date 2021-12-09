@@ -1,4 +1,4 @@
 .idea
-/.dev/docker/data
-/.dev/docker/.env
-/.dev/docker/docker-compose.yml
+.dev/docker/data
+.dev/docker/.env
+.dev/docker/docker-compose.yml
