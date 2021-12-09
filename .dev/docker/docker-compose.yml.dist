@@ -1,0 +1,18 @@
+  version "3.7"
+  services:
+    go:
+      build:
+        context: ./go
+      hostname: ${PROJECT_NAME}_go
+      volumes:
+        - ../..:/go
+        # go pkg cache
+        - ~/go/pkg:/home/go/go/pkg
+    sqlite3:
+      image: nouchka/sqlite3:latest
+      hostname: ${PROJECT_NAME}_sqlite3
+      restart: always
+      stdin_open: true
+      tty: true
+      volumes:
+        - ./data/sqlite3:/root/db/
