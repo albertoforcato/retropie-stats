@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 
@@ -9,9 +11,10 @@ import (
 
 func main() {
 	// Connect to the database
-	dbConnection, err := gorm.Open(sqlite.Open("gorm.db"), &gorm.Config{
-		DisableForeignKeyConstraintWhenMigrating: true,
-	})
+	dbConnection, err := gorm.Open(sqlite.Open(os.Getenv("SQLITE_DB_NAME")), &gorm.Config{})
+	if err != nil {
+		panic(err)
+	}
 
 	// Execute the migrations
 	err = db.ExecuteMigrations(dbConnection)

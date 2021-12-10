@@ -1,4 +1,5 @@
 .idea
-.dev/docker/data
-.dev/docker/.env
-.dev/docker/docker-compose.yml
+server/.dev/docker/data
+server/.dev/docker/.env
+server/.dev/docker/docker-compose.yml
+server/gorm.db

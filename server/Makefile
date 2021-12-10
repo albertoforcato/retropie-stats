@@ -8,8 +8,8 @@ DOCKER_SERVICES := sqlite3
 docker_compose := cd ${DOCKER_DIR} && docker-compose -f ${DOCKERFILE}
 
 run_as_go_user := run --rm --use-aliases --user go
-go_server := ${docker_compose} ${run_as_go_user} go
-go_cli := cd ${DOCKER_DIR} && CMD_NAME=cli_go SERVICE_ALIAS="" docker-compose -f ${DOCKERFILE} ${run_as_go_user} go
+go_server := ${docker_compose} ${run_as_go_user} go go
+go_cli := cd ${DOCKER_DIR} && CMD_NAME=cli_go SERVICE_ALIAS="" docker-compose -f ${DOCKERFILE} ${run_as_go_user} go go
 
 init-project:
 	cd .dev/docker && mkdir -p data
@@ -30,6 +30,8 @@ restart-docker-services:
 purge-docker-services:
 	${docker_compose} down
 run:
-	${go_server} run server/cmd/main.go
+	${go_server} run cmd/main.go;
 mod-tidy:
 	${go_cli} mod tidy
+install:
+	make build && chmod +x commands && cp commands ~/bin/retropie-stats
