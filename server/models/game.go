@@ -1,4 +1,4 @@
-package db
+package models
 
 import (
 	"time"
@@ -16,16 +16,4 @@ type Game struct {
 	Year            string
 	NumberOfPlayers uint
 	Entries         []Entry
-}
-
-type Entry struct {
-	gorm.Model
-	ID          string
-	CreatedAt   time.Time
-	UpdatedAt   time.Time
-	System      string
-	Emulator    string
-	EmulatorCmd string
-	Event       string
-	GameID      string
 }
