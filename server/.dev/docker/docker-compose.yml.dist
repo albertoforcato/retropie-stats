@@ -3,14 +3,18 @@ services:
   go:
     build:
       context: ./go
-    hostname: ${PROJECT_NAME}_go
+    environment:
+      - SQLITE_DB_NAME=${SQLITE_DB_NAME}
+      - SERVER_PORT=:${SERVER_PORT}
+    ports:
+      - "9512:9512"
     volumes:
       - ../..:/go
       # go pkg cache
       - ~/go/pkg:/home/go/go/pkg
   sqlite3:
     image: nouchka/sqlite3:latest
-    hostname: ${PROJECT_NAME}_sqlite3
+    hostname: retropie-stats_sqlite3
     restart: always
     stdin_open: true
     tty: true

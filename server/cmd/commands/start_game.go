@@ -1,6 +1,10 @@
 package main
 
-import "github.com/mitchellh/cli"
+import (
+	"net/http"
+
+	"github.com/mitchellh/cli"
+)
 
 type StartGameCommand struct{}
 
@@ -11,6 +15,10 @@ func (s StartGameCommand) Help() string {
 
 func (s StartGameCommand) Run(args []string) int {
 	//TODO implement me
+	_, err := http.Post("http://localhost:9512/api/v1/insert-new-entry", "application/json", nil)
+	if err != nil {
+		return 1
+	}
 	panic("implement me")
 }
 

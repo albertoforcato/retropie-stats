@@ -29,8 +29,10 @@ restart-docker-services:
 	${docker_compose} restart ${DOCKER_SERVICES}
 purge-docker-services:
 	${docker_compose} down
+#run:
+#	${go_server} run cmd/server/main.go;
 run:
-	${go_server} run cmd/main.go;
+	go run cmd/server/main.go;
 mod-tidy:
 	${go_cli} mod tidy
 install:

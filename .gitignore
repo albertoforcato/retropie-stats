@@ -2,4 +2,4 @@
 server/.dev/docker/data
 server/.dev/docker/.env
 server/.dev/docker/docker-compose.yml
-server/gorm.db
+server/retropie-stats.db

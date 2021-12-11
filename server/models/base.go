@@ -1,8 +1,6 @@
 package models
 
 import (
-	"os"
-
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 
@@ -11,9 +9,11 @@ import (
 
 var db *gorm.DB
 
+const dbName = "retropie-stats.db"
+
 func init() {
 	// Connect to the database
-	conn, err := gorm.Open(sqlite.Open(os.Getenv("SQLITE_DB_NAME")), &gorm.Config{})
+	conn, err := gorm.Open(sqlite.Open(dbName), &gorm.Config{})
 	if err != nil {
 		logger.Log.Errorf("Error connecting to database: %v", err)
 	}
