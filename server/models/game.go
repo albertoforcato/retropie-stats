@@ -7,13 +7,12 @@ import (
 )
 
 type Game struct {
-	gorm.Model
-	ID              string
+	Path            string `gorm:"primaryKey"`
 	CreatedAt       time.Time
 	UpdatedAt       time.Time
-	Path            string
+	DeletedAt       gorm.DeletedAt
 	Name            string
 	Year            string
 	NumberOfPlayers uint
-	Entries         []Entry
+	Entries         []Entry `gorm:"foreignKey:GamePath;references:Path"`
 }

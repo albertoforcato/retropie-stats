@@ -1,14 +1,21 @@
 package v1
 
-import "github.com/albertoforcato/retropie-stats/models"
+import (
+	"gorm.io/gorm"
 
-type GameService struct {
-	models.Game
+	"github.com/albertoforcato/retropie-stats/models"
+)
+
+type GameService struct{}
+
+//GameList returns a list of games
+func GameList(db *gorm.DB) (games []models.Game, err error) {
+	db.Find(&games)
+	return
 }
 
-func (g GameService) GameList() (games []models.Game, err error) {
-	db := models.GetDB()
-
-	db.Find(&games)
+//InsertNewGame inserts a new game into the database
+func InsertNewGame(db *gorm.DB, game models.Game) (err error) {
+	db.Create(&game)
 	return
 }

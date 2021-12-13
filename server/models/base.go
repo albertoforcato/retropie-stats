@@ -7,25 +7,19 @@ import (
 	"github.com/albertoforcato/retropie-stats/logger"
 )
 
-var db *gorm.DB
-
 const dbName = "retropie-stats.db"
 
-func init() {
+//NewDbInstance function return the instance of db
+func NewDbInstance() *gorm.DB {
 	// Connect to the database
 	conn, err := gorm.Open(sqlite.Open(dbName), &gorm.Config{})
 	if err != nil {
 		logger.Log.Errorf("Error connecting to database: %v", err)
 	}
-	db = conn
 	// Execute the migrations
-	err = db.Debug().AutoMigrate(&Game{}, &Entry{})
+	err = conn.Debug().AutoMigrate(&Game{}, &Entry{})
 	if err != nil {
 		logger.Log.Errorf("Error executing migrations: %v", err)
 	}
-}
-
-//GetDB function return the instance of db
-func GetDB() *gorm.DB {
-	return db
+	return conn
 }
