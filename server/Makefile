@@ -15,4 +15,4 @@ install:
 	make build-commands
 	sudo chmod +x commands && sudo cp commands /bin/retropie-stats
 	make build-server
-	sudo chmod +x server && cp sudo server /bin/retropie-stats-start-server
+	sudo chmod +x server && sudo cp server /bin/retropie-stats-start-server
