@@ -18,10 +18,6 @@ func (e *EndGameCommand) Help() string {
 }
 
 func (e *EndGameCommand) Run(args []string) int {
-	if len(args) != 4 {
-		logger.Log.Errorf("Invalid number of arguments")
-		return 1
-	}
 	logger.Log.Info("Saving ending game...")
 	jsonData, err := json.Marshal(models.Entry{
 		System:      args[0],
