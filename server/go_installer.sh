@@ -4,7 +4,8 @@ export GOLANG=go1.17.5.linux-armv6l.tar.gz
 wget https://dl.google.com/go/$GOLANG
 sudo mv go /usr/local
 sudo sudo tar -xvf $GOLANG
-rm $GOLANG
+sudo rm $GOLANG
+sudo rm -rf go
 unset GOLANG
 echo GOROOT="/usr/local/go" >>~/.profile
 # shellcheck disable=SC2016
