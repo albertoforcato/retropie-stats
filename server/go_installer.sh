@@ -3,3 +3,6 @@ wget https://go.dev/dl/$GOLANG
 sudo tar -C /usr/local -xzf $GOLANG
 rm $GOLANG
 unset GOLANG
+echo PATH="$PATH":/usr/local/go/bin >> ~/.profile
+echo GOPATH="$HOME"/go >> ~/.profile
+source ~/.profile
