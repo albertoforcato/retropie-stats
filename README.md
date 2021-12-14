@@ -19,6 +19,10 @@ cd server
 make install-go
 ```
 
+```shell
+source ~/.profile 
+```
+
 #### Add command to retropie system
 
 Append to `runcommand-onstart.sh` and `runcommand-onend.sh` retropie-stats command in order to run on game startup and
