@@ -7,4 +7,5 @@ sudo sudo tar -xvf $GOLANG
 rm $GOLANG
 unset GOLANG
 echo GOROOT="/usr/local/go" >>~/.profile
-echo PATH="$GOROOT/bin:$PATH" >>~/.profile
+# shellcheck disable=SC2016
+echo PATH='$GOROOT'/bin:'$PATH' >>~/.profile
