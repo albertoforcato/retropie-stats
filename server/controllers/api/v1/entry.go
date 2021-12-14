@@ -31,7 +31,7 @@ func (ctrl *PublicController) InsertStartGameEntry(c *gin.Context) {
 		return
 	}
 
-	api_helpers.Response(c, http.StatusOK, nil)
+	api_helpers.Response(c, http.StatusOK, "ok")
 }
 
 //InsertEndGameEntry inserts a new "end game" entry
@@ -53,5 +53,15 @@ func (ctrl *PublicController) InsertEndGameEntry(c *gin.Context) {
 		return
 	}
 
-	api_helpers.Response(c, http.StatusOK, nil)
+	api_helpers.Response(c, http.StatusOK, "ok")
+}
+
+func (ctrl *PublicController) EntryList(c *gin.Context) {
+	entryList, err := services.EntryList(ctrl.db)
+	if err != nil {
+		api_helpers.ResponseWithError(c, http.StatusInternalServerError, err)
+		return
+	}
+
+	api_helpers.Response(c, http.StatusOK, entryList)
 }

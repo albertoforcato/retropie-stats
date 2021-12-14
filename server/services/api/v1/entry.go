@@ -21,3 +21,9 @@ func InsertEndGameEntry(db *gorm.DB, entry models.Entry) (err error) {
 	db.Create(&entry)
 	return
 }
+
+//EntryList returns a list of entries
+func EntryList(db *gorm.DB) (entries []models.Entry, err error) {
+	db.Find(&entries)
+	return
+}

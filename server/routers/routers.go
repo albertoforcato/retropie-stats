@@ -20,6 +20,7 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 		v1.GET("game-list", pCtrl.GameList)
 		v1.POST("start-game-entry", pCtrl.InsertStartGameEntry)
 		v1.POST("end-game-entry", pCtrl.InsertEndGameEntry)
+		v1.GET("entry-list", pCtrl.EntryList)
 	}
 	return r
 }
