@@ -1,5 +1,4 @@
-export GOLANG="$(curl https://golang.org/dl/ | grep linux-armv6l | grep -v beta | head -1 | awk -F\> {'print $3'} | awk -F\< {'print $1'})"
-wget https://golang.org/dl/$GOLANG
+wget https://go.dev/dl/go1.17.5.linux-armv6l.tar.gz
 sudo tar -C /usr/local -xzf $GOLANG
 rm $GOLANG
 unset GOLANG
